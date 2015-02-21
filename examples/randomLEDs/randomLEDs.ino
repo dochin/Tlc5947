@@ -28,8 +28,6 @@ Tlc5947 myLedDriver; //Constructor for the adc driver
 
 void setup() {
   
-  //Start serial so we can see what the pot is reading
-  Serial.begin(38400);
 }
 
 void loop() {
@@ -40,7 +38,7 @@ void loop() {
     
     myLedDriver.refresh();
     
-    delay(500); //Not really needed, but makes it easier to read the serial data
+    delay(500); 
  
 }
 
