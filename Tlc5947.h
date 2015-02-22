@@ -30,6 +30,8 @@ myLedDriver.refresh(); //Send data stored in gsdata to the LED driver
 
 #define NUM_LEDS 16
 #define TLC5947_CS_PIN 8 
+// GS scale factor 16=full brightness, 8=half brightness, etc.
+#define GS_SCALE_FACTOR 4
 
 class Tlc5947 {
   public:

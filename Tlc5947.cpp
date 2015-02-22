@@ -49,14 +49,14 @@ void Tlc5947::refresh() {
       byte _byte2;
       byte _byte3;
       
-      _even=this->gsdata[_led]*16; 
+      _even=this->gsdata[_led]*GS_SCALE_FACTOR;
 
       if (_led+1 == NUM_LEDS) {
-        word _odd=0; //if there number of LEDs is even, set up a fake final LED value of 0
+        _odd=0; //if the number of LEDs is odd (final _led is even), set up a fake final LED value of 0
       }
       
       else { 
-        _odd=this->gsdata[_led+1]*16; //scale the odd value
+        _odd=this->gsdata[_led+1]*GS_SCALE_FACTOR; //scale the odd value
       }
       
       // Generate the three bytes from data for 2 LEDS to send to the chip
