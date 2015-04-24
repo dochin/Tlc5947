@@ -41,7 +41,7 @@ void Tlc5947::refresh() {
     //Pull chip select low
     digitalWrite(TLC5947_CS_PIN, LOW);
 
-    for (byte _led=0; _led<NUM_LEDS; _led+=2) { //skip every other LED because we pack 2 LEDs of data into 3 bytes
+    for (byte _led=0; _led<NUM_LEDS; _led+=2) { //skip every other channel because we pack 2 LEDs of data into 3 bytes
       word _even; //even numbered LED GS value (starting at zero) 
       word _odd; //odd numbered LED GS value (starting at one)
       
@@ -61,7 +61,7 @@ void Tlc5947::refresh() {
       
       // Generate the three bytes from data for 2 LEDS to send to the chip
       _byte1 = (byte)((_even >> 4) & 0xFF); //first byte is the first 8 bits of even numbered LED
-      _byte2 = (byte)((_even << 4) & 0xF0) | (byte)((_odd >> 4) & 0x0F); //second byte is the last 4 bits of even and first 4 bits of odd numbered LED  
+      _byte2 = (byte)((_even << 4) & 0xF0) | (byte)((_odd >> 8) & 0x0F); //second byte is the last 4 bits of even and first 4 bits of odd numbered LED  
       _byte3 = (byte)(_odd & 0xFF); //third byte is last 8 bits of odd numbered led
       
       // Send the bytes
